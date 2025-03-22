@@ -31,7 +31,7 @@ jobs:
         run: ./gradlew wasmJsBrowserDistribution
 
       - name: Upload Build Artifact (Debugging)
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: wasm-build
           path: build/dist/wasmJs/productionExecutable
