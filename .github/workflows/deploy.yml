@@ -30,11 +30,11 @@ jobs:
       - name: Build Compose Web App
         run: ./gradlew wasmJsBrowserDistribution
 
-      - name: Upload Build Artifact (Debugging)
-        uses: actions/upload-artifact@v4
+      - name: Upload GitHub Pages Artifact
+        uses: actions/upload-pages-artifact@v2
         with:
-          name: wasm-build
           path: composeApp/build/dist/wasmJs/productionExecutable
+          name: github-pages
 
   deploy:
     needs: build
@@ -43,3 +43,6 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          artifact_name: github-pages
